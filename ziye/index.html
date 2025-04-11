@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>好朋友照片集</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', '微软雅黑', system-ui, sans-serif;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+       .album-container {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+       .album-title {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin: 0 0 2.5rem 0;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+       .nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+       .nav button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: #3498db;
+            color: white;
+            transition: background 0.3s ease;
+        }
+
+       .nav button:hover {
+            background: #2980b9;
+        }
+
+       .photo-page {
+            display: none;
+        }
+
+       .photo-page.active {
+            display: block;
+        }
+
+       .photo {
+            width: 100%;
+            height: auto;
+            max-width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+
+       .photo-description {
+            padding: 1rem;
+            color: #333;
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="album-container">
+        <h1 class="album-title">吊毛序列</h1>
+        <div class="nav">
+            <button onclick="showPage(1)">照片 1</button>
+            <button onclick="showPage(2)">照片 2</button>
+            <button onclick="showPage(3)">照片 3</button>
+            <button onclick="showPage(4)">照片 4</button>
+        </div>
+        <div class="photo-page active" id="page-1">
+            <img class="photo" src="./4.jpg" alt="好朋友照片 1">
+            <div class="photo-description">
+                这个吊毛就是锡纸烫的传人，猥琐的代名词，。
+            </div>
+        </div>
+        <div class="photo-page" id="page-2">
+            <img class="photo" src="./3.jpg" alt="好朋友照片 2">
+            <div class="photo-description">
+                错了，这个才是吊毛，这个最猥琐了。
+            </div>
+        </div>
+        <div class="photo-page" id="page-3">
+            <img class="photo" src="./2.jpg" alt="好朋友照片 3">
+            <div class="photo-description">
+                哥几个一起去出去玩，为数不多的合照。
+            </div>
+        </div>
+        <div class="photo-page" id="page-4">
+            <img class="photo" src="./1.jpg" alt="好朋友照片 4">
+            <div class="photo-description">
+                疯狂宣饭，呜哈哈哈哈。
+            </div>
+        </div>
+    </div>
+    <script>
+        function showPage(pageNumber) {
+            const pages = document.querySelectorAll('.photo-page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            const targetPage = document.getElementById(`page-${pageNumber}`);
+            targetPage.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>    
